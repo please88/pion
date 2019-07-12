@@ -1,0 +1,2643 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+.AlignLeft { text-align: left; }
+.AlignCenter { text-align: center; }
+.AlignRight { text-align: right; }
+body { font-family: sans-serif; font-size: 11pt; }
+td { vertical-align: top; padding-left: 4px; padding-right: 4px; }
+
+tr.SectionGap td { font-size: 4px; border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionBegin td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionMiddle td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SubsectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+tr.SubsectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+table.fc { border-top: 1px solid Black; border-left: 1px solid Black; width: 100%; font-family: monospace; font-size: 10pt; }
+td.TextItemInsigAdd { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigDel { color: #000000; background-color: #EFEFFF; text-decoration: line-through; }
+td.TextItemInsigDiffMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigLeftMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigRightMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemNum { color: #827357; background-color: #F2F2F2; }
+td.TextItemSame { color: #000000; background-color: #FFFFFF; }
+td.TextItemSigAdd { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigDel { color: #000000; background-color: #FFE3E3; text-decoration: line-through; }
+td.TextItemSigDiffMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigLeftMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigRightMod { color: #000000; background-color: #FFE3E3; }
+.TextSegInsigDiff { color: #0000FF; }
+.TextSegReplacedDiff { color: #0000FF; font-style: italic; }
+.TextSegSigDiff { color: #FF0000; }
+</style>
+<title>pion-dtls-conn.diff</title>
+</head>
+<body>
+pion-dtls-conn.diff<br/>
+生成： 2019/7/12 9:17:46<br/>
+&nbsp; &nbsp;
+<br/>
+模式：&nbsp; 所有 &nbsp;
+<br/>
+左侧文件： C:\Users\frank\AppData\Local\Temp\TortoiseGit\conn-8135837.001.go &nbsp;
+<br/>
+右侧文件： E:\go\fssgo\src\github.com\pion\dtls\conn.go &nbsp;
+<br/>
+<table class="fc" cellspacing="0" cellpadding="0">
+<tr class="SectionBegin">
+<td class="TextItemSame">package dtls</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">package dtls</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">import (</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">import (</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/ecdsa&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/ecdsa&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/rand&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/rand&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/x509&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/x509&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;errors&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;errors&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;fmt&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;fmt&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;net&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;net&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync/atomic&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync/atomic&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;time&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;time&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/logging&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/logging&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">const initialTickerInterval = time.Second</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">const initialTickerInterval = time.Second</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">const cookieLength = 20</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">const cookieLength = 20</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">const defaultNamedCurve = namedCurveX25519</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">const defaultNamedCurve = namedCurveX25519</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">var invalidKeyingLabels = map[string]bool{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">var invalidKeyingLabels = map[string]bool{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;client finished&quot;: true,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;client finished&quot;: true,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;server finished&quot;: true,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;server finished&quot;: true,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;master secret&quot;:&nbsp;&nbsp; true,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;master secret&quot;:&nbsp;&nbsp; true,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;key expansion&quot;:&nbsp;&nbsp; true,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;key expansion&quot;:&nbsp;&nbsp; true,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type handshakeMessageHandler func(*Conn) error</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type handshakeMessageHandler func(*Conn) error</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type flightHandler func(*Conn) (bool, error)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type flightHandler func(*Conn) (bool, error)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Conn represents a DTLS connection</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Conn represents a DTLS connection</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type Conn struct {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type Conn struct {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lock&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; sync.RWMutex&nbsp; &nbsp; // Internal lock (must not be public)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lock&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; sync.RWMutex&nbsp; &nbsp; // Internal lock (must not be public)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; nextConn&nbsp; &nbsp; &nbsp;&nbsp; net.Conn&nbsp; &nbsp; &nbsp; &nbsp; // Embedded Conn, typically a udpconn we read/write from</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; nextConn&nbsp; &nbsp; &nbsp;&nbsp; net.Conn&nbsp; &nbsp; &nbsp; &nbsp; // Embedded Conn, typically a udpconn we read/write from</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; fragmentBuffer *fragmentBuffer // out-of-order and missing fragment handling</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; fragmentBuffer *fragmentBuffer // out-of-order and missing fragment handling</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; handshakeCache *handshakeCache // caching of handshake messages for verifyData generation</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; handshakeCache *handshakeCache // caching of handshake messages for verifyData generation</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; decrypted&nbsp; &nbsp; &nbsp; chan []byte&nbsp; &nbsp;&nbsp; // Decrypted Application Data, pull by calling `Read`</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; decrypted&nbsp; &nbsp; &nbsp; chan []byte&nbsp; &nbsp;&nbsp; // Decrypted Application Data, pull by calling `Read`</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; workerTicker&nbsp;&nbsp; *time.Ticker</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; workerTicker&nbsp;&nbsp; *time.Ticker</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; state State // Internal state</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; state State // Internal state</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteRequestedCertificate bool // Did we get a CertificateRequest</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteRequestedCertificate bool // Did we get a CertificateRequest</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localSRTPProtectionProfiles []SRTPProtectionProfile // Available SRTPProtectionProfiles, if empty no SRTP support</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localSRTPProtectionProfiles []SRTPProtectionProfile // Available SRTPProtectionProfiles, if empty no SRTP support</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; clientAuth ClientAuthType // If we are a client should we request a client certificate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; clientAuth ClientAuthType // If we are a client should we request a client certificate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; currFlight&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *flight</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; currFlight&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *flight</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; namedCurve&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; namedCurve</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; namedCurve&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; namedCurve</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localCertificate&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *x509.Certificate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localCertificate&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *x509.Certificate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localPrivateKey&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; crypto.PrivateKey</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localPrivateKey&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; crypto.PrivateKey</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localKeypair, remoteKeypair *namedCurveKeypair</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localKeypair, remoteKeypair *namedCurveKeypair</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; cookie&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; []byte</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; cookie&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; []byte</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localCertificateVerify&nbsp; &nbsp; []byte // cache CertificateVerify</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localCertificateVerify&nbsp; &nbsp; []byte // cache CertificateVerify</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localVerifyData&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; []byte // cached VerifyData</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localVerifyData&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; []byte // cached VerifyData</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localKeySignature&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; []byte // cached keySignature</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localKeySignature&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; []byte // cached keySignature</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteCertificateVerified bool</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteCertificateVerified bool</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; handshakeMessageHandler handshakeMessageHandler</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; handshakeMessageHandler handshakeMessageHandler</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; flightHandler&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; flightHandler</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; flightHandler&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; flightHandler</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; handshakeCompleted&nbsp; &nbsp; &nbsp; chan bool</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; handshakeCompleted&nbsp; &nbsp; &nbsp; chan bool</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; connErr atomic.Value</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; connErr atomic.Value</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; log&nbsp; &nbsp;&nbsp; logging.LeveledLogger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; log&nbsp; &nbsp;&nbsp; logging.LeveledLogger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func createConn(nextConn net.Conn, flightHandler flightHandler, handshakeMessageHandler handshakeMessageHandler, config *Config, isClient bool) (*Conn, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func createConn(nextConn net.Conn, flightHandler flightHandler, handshakeMessageHandler handshakeMessageHandler, config *Config, isClient bool) (*Conn, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if config == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if config == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errors.New(&quot;no config provided&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errors.New(&quot;no config provided&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; loggerFactory := config.LoggerFactory</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; loggerFactory := config.LoggerFactory</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if loggerFactory == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if loggerFactory == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loggerFactory = logging.NewDefaultLoggerFactory()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loggerFactory = logging.NewDefaultLoggerFactory()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if config.PrivateKey != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if config.PrivateKey != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if _, ok := config.PrivateKey.(*ecdsa.PrivateKey); !ok {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if _, ok := config.PrivateKey.(*ecdsa.PrivateKey); !ok {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errInvalidPrivateKey</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errInvalidPrivateKey</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if nextConn == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if nextConn == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errNilNextConn</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errNilNextConn</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; workerInterval := initialTickerInterval</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; workerInterval := initialTickerInterval</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if config.FlightInterval != 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if config.FlightInterval != 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; workerInterval = config.FlightInterval</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; workerInterval = config.FlightInterval</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c := &amp;Conn{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c := &amp;Conn{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nextConn:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nextConn,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nextConn:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nextConn,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; currFlight:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newFlight(isClient),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; currFlight:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newFlight(isClient),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fragmentBuffer:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newFragmentBuffer(),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fragmentBuffer:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newFragmentBuffer(),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; handshakeCache:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newHandshakeCache(),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; handshakeCache:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newHandshakeCache(),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; handshakeMessageHandler:&nbsp; &nbsp;&nbsp; handshakeMessageHandler,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; handshakeMessageHandler:&nbsp; &nbsp;&nbsp; handshakeMessageHandler,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; flightHandler:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; flightHandler,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; flightHandler:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; flightHandler,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; localCertificate:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config.Certificate,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; localCertificate:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config.Certificate,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; localPrivateKey:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; config.PrivateKey,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; localPrivateKey:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; config.PrivateKey,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; clientAuth:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config.ClientAuth,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; clientAuth:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config.ClientAuth,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; localSRTPProtectionProfiles: config.SRTPProtectionProfiles,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; localSRTPProtectionProfiles: config.SRTPProtectionProfiles,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; namedCurve:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; defaultNamedCurve,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; namedCurve:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; defaultNamedCurve,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; decrypted:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; make(chan []byte),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; decrypted:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; make(chan []byte),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; workerTicker:&nbsp; &nbsp; &nbsp;&nbsp; time.NewTicker(workerInterval),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; workerTicker:&nbsp; &nbsp; &nbsp;&nbsp; time.NewTicker(workerInterval),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; handshakeCompleted: make(chan bool),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; handshakeCompleted: make(chan bool),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; log:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loggerFactory.NewLogger(&quot;dtls&quot;),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; log:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loggerFactory.NewLogger(&quot;dtls&quot;),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.isClient = isClient</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.isClient = isClient</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var zeroEpoch uint16</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var zeroEpoch uint16</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.localEpoch.Store(zeroEpoch)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.localEpoch.Store(zeroEpoch)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.remoteEpoch.Store(zeroEpoch)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.remoteEpoch.Store(zeroEpoch)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err := c.state.localRandom.populate()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err := c.state.localRandom.populate()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if !isClient {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if !isClient {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.cookie = make([]byte, cookieLength)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.cookie = make([]byte, cookieLength)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if _, err = rand.Read(c.cookie); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if _, err = rand.Read(c.cookie); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Trigger outbound</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Trigger outbound</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.startHandshakeOutbound()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.startHandshakeOutbound()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Handle inbound</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Handle inbound</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; go func() {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; go func() {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; defer func() {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; defer func() {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; close(c.decrypted)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; close(c.decrypted)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; b := make([]byte, 8192)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; b := make([]byte, 8192)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; i, err := c.nextConn.Read(b)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; i, err := c.nextConn.Read(b)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else if c.getConnErr() != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else if c.getConnErr() != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemInsigDiffMod">&nbsp;</td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemInsigDiffMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">c.log.Tracef(&quot;dtls</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">conn</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">read</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">%d</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">bytes&quot;,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">i)</span></td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := c.handleIncoming(b[:i]); err != nil {</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := c.handleIncoming(b[:i]); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &lt;-c.handshakeCompleted</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &lt;-c.handshakeCompleted</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.log.Trace(&quot;Handshake Completed&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.log.Trace(&quot;Handshake Completed&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c, c.getConnErr()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c, c.getConnErr()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Dial connects to the given network address and establishes a DTLS connection on top</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Dial connects to the given network address and establishes a DTLS connection on top</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func Dial(network string, raddr *net.UDPAddr, config *Config) (*Conn, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func Dial(network string, raddr *net.UDPAddr, config *Config) (*Conn, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; pConn, err := net.DialUDP(network, nil, raddr)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; pConn, err := net.DialUDP(network, nil, raddr)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return Client(pConn, config)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return Client(pConn, config)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Client establishes a DTLS connection over an existing conn</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Client establishes a DTLS connection over an existing conn</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func Client(conn net.Conn, config *Config) (*Conn, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func Client(conn net.Conn, config *Config) (*Conn, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return createConn(conn, clientFlightHandler, clientHandshakeHandler, config, true)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return createConn(conn, clientFlightHandler, clientHandshakeHandler, config, true)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Server listens for incoming DTLS connections</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Server listens for incoming DTLS connections</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func Server(conn net.Conn, config *Config) (*Conn, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func Server(conn net.Conn, config *Config) (*Conn, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if config == nil || config.Certificate == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if config == nil || config.Certificate == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errServerMustHaveCertificate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errServerMustHaveCertificate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return createConn(conn, serverFlightHandler, serverHandshakeHandler, config, false)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return createConn(conn, serverFlightHandler, serverHandshakeHandler, config, false)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Read reads data from the connection.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Read reads data from the connection.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) Read(p []byte) (n int, err error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) Read(p []byte) (n int, err error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; out, ok := &lt;-c.decrypted</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; out, ok := &lt;-c.decrypted</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if !ok {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if !ok {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, c.getConnErr()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, c.getConnErr()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if len(p) &lt; len(out) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if len(p) &lt; len(out) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, errBufferTooSmall</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, errBufferTooSmall</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; copy(p, out)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; copy(p, out)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return len(out), nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return len(out), nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Write writes len(p) bytes from p to the DTLS connection</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Write writes len(p) bytes from p to the DTLS connection</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) Write(p []byte) (int, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) Write(p []byte) (int, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if c.getLocalEpoch() == 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if c.getLocalEpoch() == 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, errHandshakeInProgress</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, errHandshakeInProgress</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if c.getConnErr() != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if c.getConnErr() != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, c.getConnErr()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, c.getConnErr()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.internalSend(&amp;recordLayer{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.internalSend(&amp;recordLayer{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; recordLayerHeader: recordLayerHeader{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; recordLayerHeader: recordLayerHeader{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; epoch:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; c.getLocalEpoch(),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; epoch:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; c.getLocalEpoch(),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sequenceNumber:&nbsp; c.state.localSequenceNumber,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sequenceNumber:&nbsp; c.state.localSequenceNumber,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; protocolVersion: protocolVersion1_2,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; protocolVersion: protocolVersion1_2,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; content: &amp;applicationData{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; content: &amp;applicationData{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; data: p,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; data: p,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, true)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, true)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.localSequenceNumber++</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.localSequenceNumber++</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return len(p), nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return len(p), nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Close closes the connection.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Close closes the connection.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) Close() error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) Close() error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.notify(alertLevelFatal, alertCloseNotify)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.notify(alertLevelFatal, alertCloseNotify)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(ErrConnClosed)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(ErrConnClosed)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := c.getConnErr(); err != ErrConnClosed {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := c.getConnErr(); err != ErrConnClosed {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// RemoteCertificate exposes the remote certificate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// RemoteCertificate exposes the remote certificate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) RemoteCertificate() *x509.Certificate {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) RemoteCertificate() *x509.Certificate {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.state.remoteCertificate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.state.remoteCertificate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// SelectedSRTPProtectionProfile returns the selected SRTPProtectionProfile</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// SelectedSRTPProtectionProfile returns the selected SRTPProtectionProfile</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) SelectedSRTPProtectionProfile() (SRTPProtectionProfile, bool) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) SelectedSRTPProtectionProfile() (SRTPProtectionProfile, bool) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if c.state.srtpProtectionProfile == 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if c.state.srtpProtectionProfile == 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, false</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return 0, false</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.state.srtpProtectionProfile, true</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.state.srtpProtectionProfile, true</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// ExportKeyingMaterial from https://tools.ietf.org/html/rfc5705</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// ExportKeyingMaterial from https://tools.ietf.org/html/rfc5705</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// This allows protocols to use DTLS for key establishment, but</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// This allows protocols to use DTLS for key establishment, but</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// then use some of the keying material for their own purposes</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// then use some of the keying material for their own purposes</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) ExportKeyingMaterial(label string, context []byte, length int) ([]byte, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) ExportKeyingMaterial(label string, context []byte, length int) ([]byte, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if c.getLocalEpoch() == 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if c.getLocalEpoch() == 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errHandshakeInProgress</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errHandshakeInProgress</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if len(context) != 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if len(context) != 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errContextUnsupported</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errContextUnsupported</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if _, ok := invalidKeyingLabels[label]; ok {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if _, ok := invalidKeyingLabels[label]; ok {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errReservedExportKeyingMaterial</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errReservedExportKeyingMaterial</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localRandom, err := c.state.localRandom.Marshal()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; localRandom, err := c.state.localRandom.Marshal()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteRandom, err := c.state.remoteRandom.Marshal()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteRandom, err := c.state.remoteRandom.Marshal()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; seed := []byte(label)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; seed := []byte(label)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if c.state.isClient {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if c.state.isClient {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; seed = append(append(seed, localRandom...), remoteRandom...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; seed = append(append(seed, localRandom...), remoteRandom...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; seed = append(append(seed, remoteRandom...), localRandom...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; seed = append(append(seed, remoteRandom...), localRandom...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return prfPHash(c.state.masterSecret, seed, length, c.state.cipherSuite.hashFunc())</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return prfPHash(c.state.masterSecret, seed, length, c.state.cipherSuite.hashFunc())</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) internalSend(pkt *recordLayer, shouldEncrypt bool) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) internalSend(pkt *recordLayer, shouldEncrypt bool) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; raw, err := pkt.Marshal()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; raw, err := pkt.Marshal()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if h, ok := pkt.content.(*handshake); ok {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if h, ok := pkt.content.(*handshake); ok {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Tracef(&quot;[handshake] -&gt; %s&quot;, h.handshakeHeader.handshakeType.String())</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Tracef(&quot;[handshake] -&gt; %s&quot;, h.handshakeHeader.handshakeType.String())</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.handshakeCache.push(raw[recordLayerHeaderSize:], h.handshakeHeader.messageSequence, h.handshakeHeader.handshakeType, c.state.isClient)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.handshakeCache.push(raw[recordLayerHeaderSize:], h.handshakeHeader.messageSequence, h.handshakeHeader.handshakeType, c.state.isClient)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if shouldEncrypt {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if shouldEncrypt {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; raw, err = c.state.cipherSuite.encrypt(pkt, raw)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; raw, err = c.state.cipherSuite.encrypt(pkt, raw)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if _, err := c.nextConn.Write(raw); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if _, err := c.nextConn.Write(raw); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) handleIncoming(buf []byte) error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) handleIncoming(buf []byte) error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; pkts, err := unpackDatagram(buf)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; pkts, err := unpackDatagram(buf)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for _, p := range pkts {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for _, p := range pkts {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; err := c.handleIncomingPacket(p)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; err := c.handleIncomingPacket(p)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) handleIncomingPacket(buf []byte) error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) handleIncomingPacket(buf []byte) error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // TODO: avoid separate unmarshal</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // TODO: avoid separate unmarshal</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; h := &amp;recordLayerHeader{}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; h := &amp;recordLayerHeader{}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := h.Unmarshal(buf); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := h.Unmarshal(buf); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemInsigDiffMod">&nbsp;</td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemInsigDiffMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">c.log.Debugf(&quot;recordLayerHeader:</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">%v&quot;,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">h)</span></td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if h.epoch &lt; c.getRemoteEpoch() {</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if h.epoch &lt; c.getRemoteEpoch() {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if _, err := c.flightHandler(c); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if _, err := c.flightHandler(c); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if h.epoch != 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if h.epoch != 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if c.state.cipherSuite == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if c.state.cipherSuite == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Debug(&quot;handleIncoming: Handshake not finished, dropping packet&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Debug(&quot;handleIncoming: Handshake not finished, dropping packet&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var err error</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var err error</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; buf, err = c.state.cipherSuite.decrypt(buf)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; buf, err = c.state.cipherSuite.decrypt(buf)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Debugf(&quot;decrypt failed: %s&quot;, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Debugf(&quot;decrypt failed: %s&quot;, err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; isHandshake, err := c.fragmentBuffer.push(append([]byte{}, buf...))</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; isHandshake, err := c.fragmentBuffer.push(append([]byte{}, buf...))</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if isHandshake {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if isHandshake {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newHandshakeMessage := false</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newHandshakeMessage := false</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for out := c.fragmentBuffer.pop(); out != nil; out = c.fragmentBuffer.pop() {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for out := c.fragmentBuffer.pop(); out != nil; out = c.fragmentBuffer.pop() {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; rawHandshake := &amp;handshake{}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; rawHandshake := &amp;handshake{}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := rawHandshake.Unmarshal(out); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := rawHandshake.Unmarshal(out); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if c.handshakeCache.push(out, rawHandshake.handshakeHeader.messageSequence, rawHandshake.handshakeHeader.handshakeType, !c.state.isClient) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if c.handshakeCache.push(out, rawHandshake.handshakeHeader.messageSequence, rawHandshake.handshakeHeader.handshakeType, !c.state.isClient) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newHandshakeMessage = true</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newHandshakeMessage = true</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">-+</td>
+<td class="TextItemInsigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">c.log.Debugf(&quot;rawHandshake:</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">%v&quot;,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">rawHandshake)</span></td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if !newHandshakeMessage {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if !newHandshakeMessage {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return c.handshakeMessageHandler(c)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return c.handshakeMessageHandler(c)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; r := &amp;recordLayer{}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; r := &amp;recordLayer{}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := r.Unmarshal(buf); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := r.Unmarshal(buf); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; switch content := r.content.(type) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; switch content := r.content.(type) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case *alert:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case *alert:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Tracef(&quot;&lt;- %s&quot;, content.String())</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Tracef(&quot;&lt;- %s&quot;, content.String())</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if content.alertDescription == alertCloseNotify {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if content.alertDescription == alertCloseNotify {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return c.Close()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return c.Close()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;alert: %v&quot;, content)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;alert: %v&quot;, content)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case *changeCipherSpec:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case *changeCipherSpec:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Trace(&quot;&lt;- ChangeCipherSpec&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.log.Trace(&quot;&lt;- ChangeCipherSpec&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.setRemoteEpoch(c.getRemoteEpoch() + 1)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.setRemoteEpoch(c.getRemoteEpoch() + 1)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case *applicationData:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case *applicationData:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.decrypted &lt;- content.data</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.decrypted &lt;- content.data</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; default:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; default:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;unhandled contentType %d&quot;, content.contentType())</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;unhandled contentType %d&quot;, content.contentType())</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) notify(level alertLevel, desc alertDescription) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) notify(level alertLevel, desc alertDescription) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer c.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.internalSend(&amp;recordLayer{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.internalSend(&amp;recordLayer{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; recordLayerHeader: recordLayerHeader{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; recordLayerHeader: recordLayerHeader{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; epoch:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; c.getLocalEpoch(),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; epoch:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; c.getLocalEpoch(),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sequenceNumber:&nbsp; c.state.localSequenceNumber,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sequenceNumber:&nbsp; c.state.localSequenceNumber,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; protocolVersion: protocolVersion1_2,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; protocolVersion: protocolVersion1_2,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; content: &amp;alert{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; content: &amp;alert{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; alertLevel:&nbsp; &nbsp; &nbsp;&nbsp; level,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; alertLevel:&nbsp; &nbsp; &nbsp;&nbsp; level,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; alertDescription: desc,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; alertDescription: desc,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, true)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, true)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.localSequenceNumber++</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.localSequenceNumber++</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) signalHandshakeComplete() {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) signalHandshakeComplete() {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; select {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; select {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case &lt;-c.handshakeCompleted:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case &lt;-c.handshakeCompleted:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; default:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; default:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; close(c.handshakeCompleted)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; close(c.handshakeCompleted)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) startHandshakeOutbound() {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) startHandshakeOutbound() {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; go func() {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; go func() {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var (</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var (</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isFinished bool</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isFinished bool</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; err&nbsp; &nbsp; &nbsp; &nbsp; error</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; err&nbsp; &nbsp; &nbsp; &nbsp; error</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; select {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; select {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &lt;-c.handshakeCompleted:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &lt;-c.handshakeCompleted:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &lt;-c.workerTicker.C:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &lt;-c.workerTicker.C:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isFinished, err = c.flightHandler(c)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isFinished, err = c.flightHandler(c)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &lt;-c.currFlight.workerTrigger:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &lt;-c.currFlight.workerTrigger:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isFinished, err = c.flightHandler(c)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isFinished, err = c.flightHandler(c)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; switch {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; switch {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case err != nil:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case err != nil:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c.stopWithError(err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case c.getConnErr() != nil:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case c.getConnErr() != nil:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case isFinished:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case isFinished:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return // Handshake is complete</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return // Handshake is complete</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">func (c *Conn) stopWithError(err error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) stopWithError(err error) {</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">-+</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">c.log.Errorf(&quot;stopWithError</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">%v&quot;,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">err)</span><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemInsigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if connErr := c.nextConn.Close(); connErr != nil {</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if connErr := c.nextConn.Close(); connErr != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != ErrConnClosed {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != ErrConnClosed {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; connErr = fmt.Errorf(&quot;%v\n%v&quot;, err, connErr)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; connErr = fmt.Errorf(&quot;%v\n%v&quot;, err, connErr)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; err = connErr</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; err = connErr</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.connErr.Store(struct{ error }{err})</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.connErr.Store(struct{ error }{err})</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.workerTicker.Stop()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.workerTicker.Stop()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.signalHandshakeComplete()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.signalHandshakeComplete()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) getConnErr() error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) getConnErr() error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err, _ := c.connErr.Load().(struct{ error })</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err, _ := c.connErr.Load().(struct{ error })</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return err.error</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return err.error</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) setLocalEpoch(epoch uint16) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) setLocalEpoch(epoch uint16) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.localEpoch.Store(epoch)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.localEpoch.Store(epoch)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) getLocalEpoch() uint16 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) getLocalEpoch() uint16 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.state.localEpoch.Load().(uint16)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.state.localEpoch.Load().(uint16)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) setRemoteEpoch(epoch uint16) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) setRemoteEpoch(epoch uint16) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.remoteEpoch.Store(epoch)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; c.state.remoteEpoch.Store(epoch)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) getRemoteEpoch() uint16 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) getRemoteEpoch() uint16 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.state.remoteEpoch.Load().(uint16)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.state.remoteEpoch.Load().(uint16)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// LocalAddr is a stub</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// LocalAddr is a stub</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) LocalAddr() net.Addr {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) LocalAddr() net.Addr {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.LocalAddr()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.LocalAddr()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// RemoteAddr is a stub</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// RemoteAddr is a stub</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) RemoteAddr() net.Addr {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) RemoteAddr() net.Addr {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.RemoteAddr()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.RemoteAddr()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// SetDeadline is a stub</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// SetDeadline is a stub</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) SetDeadline(t time.Time) error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) SetDeadline(t time.Time) error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.SetDeadline(t)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.SetDeadline(t)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// SetReadDeadline is a stub</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// SetReadDeadline is a stub</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) SetReadDeadline(t time.Time) error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) SetReadDeadline(t time.Time) error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.SetReadDeadline(t)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.SetReadDeadline(t)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// SetWriteDeadline is a stub</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// SetWriteDeadline is a stub</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (c *Conn) SetWriteDeadline(t time.Time) error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (c *Conn) SetWriteDeadline(t time.Time) error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.SetWriteDeadline(t)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return c.nextConn.SetWriteDeadline(t)</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+</table>
+<br/>
+</body>
+</html>
