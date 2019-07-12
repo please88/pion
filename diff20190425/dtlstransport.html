@@ -1,0 +1,1563 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+.AlignLeft { text-align: left; }
+.AlignCenter { text-align: center; }
+.AlignRight { text-align: right; }
+body { font-family: sans-serif; font-size: 11pt; }
+td { vertical-align: top; padding-left: 4px; padding-right: 4px; }
+
+tr.SectionGap td { font-size: 4px; border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionBegin td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionMiddle td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SubsectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+tr.SubsectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+table.fc { border-top: 1px solid Black; border-left: 1px solid Black; width: 100%; font-family: monospace; font-size: 10pt; }
+td.TextItemInsigAdd { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigDel { color: #000000; background-color: #EFEFFF; text-decoration: line-through; }
+td.TextItemInsigDiffMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigLeftMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigRightMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemNum { color: #827357; background-color: #F2F2F2; }
+td.TextItemSame { color: #000000; background-color: #FFFFFF; }
+td.TextItemSigAdd { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigDel { color: #000000; background-color: #FFE3E3; text-decoration: line-through; }
+td.TextItemSigDiffMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigLeftMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigRightMod { color: #000000; background-color: #FFE3E3; }
+.TextSegInsigDiff { color: #0000FF; }
+.TextSegReplacedDiff { color: #0000FF; font-style: italic; }
+.TextSegSigDiff { color: #FF0000; }
+</style>
+<title>dtlstransport.diff</title>
+</head>
+<body>
+dtlstransport.diff<br/>
+生成： 2019/7/12 14:17:35<br/>
+&nbsp; &nbsp;
+<br/>
+模式：&nbsp; 所有 &nbsp;
+<br/>
+左侧文件： E:\go\fssgo\src\github.com\pion\webrtc\v2\dtlstransport.go &nbsp;
+<br/>
+右侧文件： E:\go\pion\src\github.com\pion\webrtc\v2\dtlstransport.go &nbsp;
+<br/>
+<table class="fc" cellspacing="0" cellpadding="0">
+<tr class="SectionBegin">
+<td class="TextItemSame">// +build !js</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">// +build !js</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">package webrtc</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">package webrtc</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">import (</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">import (</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/ecdsa&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/ecdsa&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/elliptic&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/elliptic&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/rand&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/rand&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/x509&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;crypto/x509&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;errors&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;errors&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;fmt&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;fmt&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;strings&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;strings&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;time&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;time&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/dtls&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/dtls&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/srtp&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/srtp&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/webrtc/v2/internal/mux&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/webrtc/v2/internal/mux&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/webrtc/v2/internal/util&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/webrtc/v2/internal/util&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/webrtc/v2/pkg/rtcerr&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/webrtc/v2/pkg/rtcerr&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// DTLSTransport allows an application access to information about the DTLS</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// DTLSTransport allows an application access to information about the DTLS</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// transport over which RTP and RTCP packets are sent and received by</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// transport over which RTP and RTCP packets are sent and received by</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// RTPSender and RTPReceiver, as well other data such as SCTP packets sent</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// RTPSender and RTPReceiver, as well other data such as SCTP packets sent</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// and received by data channels.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// and received by data channels.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type DTLSTransport struct {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type DTLSTransport struct {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lock sync.RWMutex</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lock sync.RWMutex</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; iceTransport&nbsp; &nbsp; &nbsp; *ICETransport</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; iceTransport&nbsp; &nbsp; &nbsp; *ICETransport</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; certificates&nbsp; &nbsp; &nbsp; []Certificate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; certificates&nbsp; &nbsp; &nbsp; []Certificate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteParameters&nbsp; DTLSParameters</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteParameters&nbsp; DTLSParameters</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteCertificate []byte</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteCertificate []byte</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // State&nbsp; &nbsp;&nbsp; DTLSTransportState</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // State&nbsp; &nbsp;&nbsp; DTLSTransportState</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // OnStateChange func()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // OnStateChange func()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // OnError&nbsp; &nbsp; &nbsp;&nbsp; func()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // OnError&nbsp; &nbsp; &nbsp;&nbsp; func()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; conn *dtls.Conn</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; conn *dtls.Conn</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtpSession&nbsp;&nbsp; *srtp.SessionSRTP</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtpSession&nbsp;&nbsp; *srtp.SessionSRTP</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtcpSession&nbsp; *srtp.SessionSRTCP</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtcpSession&nbsp; *srtp.SessionSRTCP</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtpEndpoint&nbsp; *mux.Endpoint</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtpEndpoint&nbsp; *mux.Endpoint</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtcpEndpoint *mux.Endpoint</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtcpEndpoint *mux.Endpoint</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; api *API</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; api *API</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// NewDTLSTransport creates a new DTLSTransport.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// NewDTLSTransport creates a new DTLSTransport.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// This constructor is part of the ORTC API. It is not</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// This constructor is part of the ORTC API. It is not</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// meant to be used together with the basic WebRTC API.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// meant to be used together with the basic WebRTC API.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (api *API) NewDTLSTransport(transport *ICETransport, certificates []Certificate) (*DTLSTransport, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (api *API) NewDTLSTransport(transport *ICETransport, certificates []Certificate) (*DTLSTransport, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t := &amp;DTLSTransport{iceTransport: transport, api: api}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t := &amp;DTLSTransport{iceTransport: transport, api: api}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if len(certificates) &gt; 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if len(certificates) &gt; 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; now := time.Now()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; now := time.Now()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for _, x509Cert := range certificates {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for _, x509Cert := range certificates {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if !x509Cert.Expires().IsZero() &amp;&amp; now.After(x509Cert.Expires()) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if !x509Cert.Expires().IsZero() &amp;&amp; now.After(x509Cert.Expires()) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, &amp;rtcerr.InvalidAccessError{Err: ErrCertificateExpired}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, &amp;rtcerr.InvalidAccessError{Err: ErrCertificateExpired}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.certificates = append(t.certificates, x509Cert)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.certificates = append(t.certificates, x509Cert)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sk, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sk, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, &amp;rtcerr.UnknownError{Err: err}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, &amp;rtcerr.UnknownError{Err: err}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; certificate, err := GenerateCertificate(sk)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; certificate, err := GenerateCertificate(sk)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.certificates = []Certificate{*certificate}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.certificates = []Certificate{*certificate}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t, nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t, nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// ICETransport returns the currently-configured *ICETransport or nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// ICETransport returns the currently-configured *ICETransport or nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// if one has not been configured</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// if one has not been configured</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) ICETransport() *ICETransport {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) ICETransport() *ICETransport {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.iceTransport</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.iceTransport</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// GetLocalParameters returns the DTLS parameters of the local DTLSTransport upon construction.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// GetLocalParameters returns the DTLS parameters of the local DTLSTransport upon construction.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) GetLocalParameters() (DTLSParameters, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) GetLocalParameters() (DTLSParameters, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; fingerprints := []DTLSFingerprint{}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; fingerprints := []DTLSFingerprint{}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for _, c := range t.certificates {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for _, c := range t.certificates {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; prints, err := c.GetFingerprints() // TODO: Should be only one?</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; prints, err := c.GetFingerprints() // TODO: Should be only one?</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return DTLSParameters{}, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return DTLSParameters{}, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fingerprints = append(fingerprints, prints...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fingerprints = append(fingerprints, prints...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return DTLSParameters{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return DTLSParameters{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Role:&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; DTLSRoleAuto, // always returns the default role</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Role:&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; DTLSRoleAuto, // always returns the default role</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Fingerprints: fingerprints,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Fingerprints: fingerprints,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// GetRemoteCertificate returns the certificate chain in use by the remote side</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// GetRemoteCertificate returns the certificate chain in use by the remote side</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// returns an empty list prior to selection of the remote certificate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// returns an empty list prior to selection of the remote certificate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) GetRemoteCertificate() []byte {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) GetRemoteCertificate() []byte {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.remoteCertificate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.remoteCertificate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) startSRTP() error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) startSRTP() error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtpSession != nil &amp;&amp; t.srtcpSession != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtpSession != nil &amp;&amp; t.srtcpSession != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if t.conn == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else if t.conn == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;the DTLS transport has not started yet&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;the DTLS transport has not started yet&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtpConfig := &amp;srtp.Config{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtpConfig := &amp;srtp.Config{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Profile:&nbsp; &nbsp; &nbsp;&nbsp; srtp.ProtectionProfileAes128CmHmacSha1_80,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Profile:&nbsp; &nbsp; &nbsp;&nbsp; srtp.ProtectionProfileAes128CmHmacSha1_80,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LoggerFactory: t.api.settingEngine.LoggerFactory,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LoggerFactory: t.api.settingEngine.LoggerFactory,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err := srtpConfig.ExtractSessionKeysFromDTLS(t.conn, t.isClient())</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err := srtpConfig.ExtractSessionKeysFromDTLS(t.conn, t.isClient())</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;failed to extract sctp session keys: %v&quot;, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;failed to extract sctp session keys: %v&quot;, err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtpSession, err := srtp.NewSessionSRTP(t.srtpEndpoint, srtpConfig)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtpSession, err := srtp.NewSessionSRTP(t.srtpEndpoint, srtpConfig)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;failed to start srtp: %v&quot;, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;failed to start srtp: %v&quot;, err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtcpSession, err := srtp.NewSessionSRTCP(t.srtcpEndpoint, srtpConfig)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; srtcpSession, err := srtp.NewSessionSRTCP(t.srtcpEndpoint, srtpConfig)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;failed to start srtp: %v&quot;, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;failed to start srtp: %v&quot;, err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.srtpSession = srtpSession</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.srtpSession = srtpSession</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.srtcpSession = srtcpSession</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.srtcpSession = srtcpSession</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) getSRTPSession() (*srtp.SessionSRTP, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) getSRTPSession() (*srtp.SessionSRTP, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtpSession != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtpSession != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return t.srtpSession, nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return t.srtpSession, nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := t.startSRTP(); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := t.startSRTP(); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.srtpSession, nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.srtpSession, nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) getSRTCPSession() (*srtp.SessionSRTCP, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) getSRTCPSession() (*srtp.SessionSRTCP, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtcpSession != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtcpSession != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return t.srtcpSession, nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return t.srtcpSession, nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := t.startSRTP(); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := t.startSRTP(); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.srtcpSession, nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.srtcpSession, nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">func (t *DTLSTransport) isClient() bool {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) isClient() bool {</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">return</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">false</span></td>
+<td class="AlignCenter">+-</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemInsigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; isClient := true</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; isClient := true</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; switch t.remoteParameters.Role {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; switch t.remoteParameters.Role {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case DTLSRoleClient:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case DTLSRoleClient:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isClient = true</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isClient = true</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case DTLSRoleServer:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; case DTLSRoleServer:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isClient = false</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isClient = false</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; default:</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; default:</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if t.iceTransport.Role() == ICERoleControlling {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if t.iceTransport.Role() == ICERoleControlling {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isClient = false</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; isClient = false</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return isClient</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return isClient</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Start DTLS transport negotiation with the parameters of the remote DTLS transport</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Start DTLS transport negotiation with the parameters of the remote DTLS transport</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) Start(remoteParameters DTLSParameters) error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) Start(remoteParameters DTLSParameters) error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := t.ensureICEConn(); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := t.ensureICEConn(); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; mx := t.iceTransport.mux</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; mx := t.iceTransport.mux</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; dtlsEndpoint := mx.NewEndpoint(mux.MatchDTLS)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; dtlsEndpoint := mx.NewEndpoint(mux.MatchDTLS)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.srtpEndpoint = mx.NewEndpoint(mux.MatchSRTP)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.srtpEndpoint = mx.NewEndpoint(mux.MatchSRTP)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.srtcpEndpoint = mx.NewEndpoint(mux.MatchSRTCP)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.srtcpEndpoint = mx.NewEndpoint(mux.MatchSRTCP)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // TODO: handle multiple certs</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // TODO: handle multiple certs</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; cert := t.certificates[0]</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; cert := t.certificates[0]</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; dtlsCofig := &amp;dtls.Config{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; dtlsCofig := &amp;dtls.Config{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Certificate:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cert.x509Cert,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Certificate:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cert.x509Cert,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PrivateKey:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; cert.privateKey,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PrivateKey:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; cert.privateKey,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SRTPProtectionProfiles: []dtls.SRTPProtectionProfile{dtls.SRTP_AES128_CM_HMAC_SHA1_80},</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SRTPProtectionProfiles: []dtls.SRTPProtectionProfile{dtls.SRTP_AES128_CM_HMAC_SHA1_80},</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ClientAuth:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; dtls.RequireAnyClientCert,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ClientAuth:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; dtls.RequireAnyClientCert,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LoggerFactory:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.api.settingEngine.LoggerFactory,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LoggerFactory:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.api.settingEngine.LoggerFactory,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.isClient() {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.isClient() {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Assumes the peer offered to be passive and we accepted.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Assumes the peer offered to be passive and we accepted.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dtlsConn, err := dtls.Client(dtlsEndpoint, dtlsCofig)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dtlsConn, err := dtls.Client(dtlsEndpoint, dtlsCofig)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.conn = dtlsConn</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.conn = dtlsConn</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Assumes we offer to be passive and this is accepted.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Assumes we offer to be passive and this is accepted.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dtlsConn, err := dtls.Server(dtlsEndpoint, dtlsCofig)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dtlsConn, err := dtls.Server(dtlsEndpoint, dtlsCofig)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.conn = dtlsConn</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.conn = dtlsConn</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Check the fingerprint if a certificate was exchanged</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Check the fingerprint if a certificate was exchanged</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteCert := t.conn.RemoteCertificate()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remoteCert := t.conn.RemoteCertificate()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if remoteCert == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if remoteCert == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;peer didn't provide certificate via DTLS&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return fmt.Errorf(&quot;peer didn't provide certificate via DTLS&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.remoteCertificate = remoteCert.Raw</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.remoteCertificate = remoteCert.Raw</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.validateFingerPrint(remoteParameters, remoteCert)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return t.validateFingerPrint(remoteParameters, remoteCert)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Stop stops and closes the DTLSTransport object.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Stop stops and closes the DTLSTransport object.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) Stop() error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) Stop() error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; t.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer t.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Try closing everything and collect the errors</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Try closing everything and collect the errors</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var closeErrs []error</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var closeErrs []error</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtpSession != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtpSession != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := t.srtpSession.Close(); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := t.srtpSession.Close(); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; closeErrs = append(closeErrs, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; closeErrs = append(closeErrs, err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtcpSession != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.srtcpSession != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := t.srtcpSession.Close(); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := t.srtcpSession.Close(); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; closeErrs = append(closeErrs, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; closeErrs = append(closeErrs, err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.conn != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.conn != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := t.conn.Close(); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err := t.conn.Close(); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; closeErrs = append(closeErrs, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; closeErrs = append(closeErrs, err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return util.FlattenErrs(closeErrs)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return util.FlattenErrs(closeErrs)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) validateFingerPrint(remoteParameters DTLSParameters, remoteCert *x509.Certificate) error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) validateFingerPrint(remoteParameters DTLSParameters, remoteCert *x509.Certificate) error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for _, fp := range remoteParameters.Fingerprints {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for _, fp := range remoteParameters.Fingerprints {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hashAlgo, err := dtls.HashAlgorithmString(fp.Algorithm)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hashAlgo, err := dtls.HashAlgorithmString(fp.Algorithm)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; remoteValue, err := dtls.Fingerprint(remoteCert, hashAlgo)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; remoteValue, err := dtls.Fingerprint(remoteCert, hashAlgo)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if strings.EqualFold(remoteValue, fp.Value) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if strings.EqualFold(remoteValue, fp.Value) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return errors.New(&quot;no matching fingerprint&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return errors.New(&quot;no matching fingerprint&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (t *DTLSTransport) ensureICEConn() error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (t *DTLSTransport) ensureICEConn() error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.iceTransport == nil ||</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if t.iceTransport == nil ||</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.iceTransport.conn == nil ||</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.iceTransport.conn == nil ||</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.iceTransport.mux == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t.iceTransport.mux == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return errors.New(&quot;ICE connection not started&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return errors.New(&quot;ICE connection not started&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+</table>
+<br/>
+</body>
+</html>

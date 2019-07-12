@@ -1,0 +1,693 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+.AlignLeft { text-align: left; }
+.AlignCenter { text-align: center; }
+.AlignRight { text-align: right; }
+body { font-family: sans-serif; font-size: 11pt; }
+td { vertical-align: top; padding-left: 4px; padding-right: 4px; }
+
+tr.SectionGap td { font-size: 4px; border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionBegin td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionMiddle td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SubsectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+tr.SubsectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+table.fc { border-top: 1px solid Black; border-left: 1px solid Black; width: 100%; font-family: monospace; font-size: 10pt; }
+td.TextItemInsigAdd { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigDel { color: #000000; background-color: #EFEFFF; text-decoration: line-through; }
+td.TextItemInsigDiffMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigLeftMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigRightMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemNum { color: #827357; background-color: #F2F2F2; }
+td.TextItemSame { color: #000000; background-color: #FFFFFF; }
+td.TextItemSigAdd { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigDel { color: #000000; background-color: #FFE3E3; text-decoration: line-through; }
+td.TextItemSigDiffMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigLeftMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigRightMod { color: #000000; background-color: #FFE3E3; }
+.TextSegInsigDiff { color: #0000FF; }
+.TextSegReplacedDiff { color: #0000FF; font-style: italic; }
+.TextSegSigDiff { color: #FF0000; }
+</style>
+<title>candidatepair.diff</title>
+</head>
+<body>
+candidatepair.diff<br/>
+生成： 2019/7/12 10:10:56<br/>
+&nbsp; &nbsp;
+<br/>
+模式：&nbsp; 所有 &nbsp;
+<br/>
+左侧文件： C:\Users\frank\AppData\Local\Temp\TortoiseGit\candidatepair-ea5cdd0.000.go &nbsp;
+<br/>
+右侧文件： E:\go\fssgo\src\github.com\pion\ice\candidatepair.go &nbsp;
+<br/>
+<table class="fc" cellspacing="0" cellpadding="0">
+<tr class="SectionBegin">
+<td class="TextItemSame">package ice</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">package ice</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">import (</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">import (</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;fmt&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;fmt&quot;</td>
+</tr>
+<tr class="SectionAll">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">-+</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">&quot;encoding/binary&quot;</span></td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/stun&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/stun&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func newCandidatePair(local, remote *Candidate, controlling bool) *candidatePair {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func newCandidatePair(local, remote *Candidate, controlling bool) *candidatePair {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return &amp;candidatePair{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return &amp;candidatePair{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; iceRoleControlling: controlling,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; iceRoleControlling: controlling,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; remote:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; remote,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; remote:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; remote,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; local:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; local,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; local:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; local,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// candidatePair represents a combination of a local and remote candidate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// candidatePair represents a combination of a local and remote candidate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type candidatePair struct {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type candidatePair struct {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; iceRoleControlling bool</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; iceRoleControlling bool</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remote&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; *Candidate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; remote&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; *Candidate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; local&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *Candidate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; local&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *Candidate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (p *candidatePair) String() string {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (p *candidatePair) String() string {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return fmt.Sprintf(&quot;prio %d (local, prio %d) %s &lt;-&gt; %s (remote, prio %d)&quot;,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return fmt.Sprintf(&quot;prio %d (local, prio %d) %s &lt;-&gt; %s (remote, prio %d)&quot;,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; p.Priority(), p.local.Priority(), p.local, p.remote, p.remote.Priority())</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; p.Priority(), p.local.Priority(), p.local, p.remote, p.remote.Priority())</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (p *candidatePair) Equal(other *candidatePair) bool {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (p *candidatePair) Equal(other *candidatePair) bool {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if p == nil &amp;&amp; other == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if p == nil &amp;&amp; other == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return true</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return true</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if p == nil || other == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if p == nil || other == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return false</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return false</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return p.local.Equal(other.local) &amp;&amp; p.remote.Equal(other.remote)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return p.local.Equal(other.local) &amp;&amp; p.remote.Equal(other.remote)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// RFC 5245 - 5.7.2.&nbsp; Computing Pair Priority and Ordering Pairs</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// RFC 5245 - 5.7.2.&nbsp; Computing Pair Priority and Ordering Pairs</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Let G be the priority for the candidate provided by the controlling</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Let G be the priority for the candidate provided by the controlling</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// agent.&nbsp; Let D be the priority for the candidate provided by the</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// agent.&nbsp; Let D be the priority for the candidate provided by the</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// controlled agent.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// controlled agent.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// pair priority = 2^32*MIN(G,D) + 2*MAX(G,D) + (G&gt;D?1:0)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// pair priority = 2^32*MIN(G,D) + 2*MAX(G,D) + (G&gt;D?1:0)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (p *candidatePair) Priority() uint64 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (p *candidatePair) Priority() uint64 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var g uint32</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var g uint32</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var d uint32</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var d uint32</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if p.iceRoleControlling {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if p.iceRoleControlling {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; g = p.local.Priority()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; g = p.local.Priority()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = p.remote.Priority()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = p.remote.Priority()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; } else {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; g = p.remote.Priority()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; g = p.remote.Priority()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = p.local.Priority()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = p.local.Priority()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Just implement these here rather</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // Just implement these here rather</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // than fooling around with the math package</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // than fooling around with the math package</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; min := func(x, y uint32) uint64 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; min := func(x, y uint32) uint64 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if x &lt; y {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if x &lt; y {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(x)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(x)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(y)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(y)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; max := func(x, y uint32) uint64 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; max := func(x, y uint32) uint64 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if x &gt; y {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if x &gt; y {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(x)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(x)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(y)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(y)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; cmp := func(x, y uint32) uint64 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; cmp := func(x, y uint32) uint64 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if x &gt; y {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if x &gt; y {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(1)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(1)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(0)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return uint64(0)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // 1&lt;&lt;32 overflows uint32; and if both g &amp;&amp; d are</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // 1&lt;&lt;32 overflows uint32; and if both g &amp;&amp; d are</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // maxUint32, this result would overflow uint64</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; // maxUint32, this result would overflow uint64</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return (1&lt;&lt;32-1)*min(g, d) + 2*max(g, d) + cmp(g, d)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return (1&lt;&lt;32-1)*min(g, d) + 2*max(g, d) + cmp(g, d)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">func (p *candidatePair) Write(b []byte) (int, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (p *candidatePair) Write(b []byte) (int, error) {</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSigDiffMod">&nbsp; &nbsp; &nbsp; &nbsp; return p.local.writeTo(b, p.remote)</td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemSigDiffMod">&nbsp; &nbsp; &nbsp; &nbsp; <span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span>return p.local.writeTo(b, p.remote)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">a</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">:=</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">p.local.agent</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemInsigRightMod">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">udpMsgLen</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">:=</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">len(b)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">tcpMsg</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">:=</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">make([]byte,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">udpMsgLen</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">+</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">2)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">binary.BigEndian.PutUint16(tcpMsg,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">uint16(udpMsgLen))</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">copy(tcpMsg[2:],</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">b)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">a.log.Debugf(&quot;Write</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">%d</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">bytes&quot;,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">len(tcpMsg))</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemInsigRightMod">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">return</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">a.IceConn.Write(tcpMsg)</span></td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// keepaliveCandidate sends a STUN Binding Indication to the remote candidate</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// keepaliveCandidate sends a STUN Binding Indication to the remote candidate</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (a *Agent) keepaliveCandidate(local, remote *Candidate) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (a *Agent) keepaliveCandidate(local, remote *Candidate) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; msg, err := stun.Build(stun.ClassIndication, stun.MethodBinding, stun.GenerateTransactionID(),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; msg, err := stun.Build(stun.ClassIndication, stun.MethodBinding, stun.GenerateTransactionID(),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;stun.Username{Username: a.remoteUfrag + &quot;:&quot; + a.localUfrag},</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;stun.Username{Username: a.remoteUfrag + &quot;:&quot; + a.localUfrag},</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;stun.MessageIntegrity{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;stun.MessageIntegrity{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Key: []byte(a.remotePwd),</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Key: []byte(a.remotePwd),</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;stun.Fingerprint{},</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;stun.Fingerprint{},</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; )</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; )</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.log.Warn(err.Error())</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.log.Warn(err.Error())</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; a.sendSTUN(msg, local, remote)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; a.sendSTUN(msg, local, remote)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">func (a *Agent) sendSTUN(msg *stun.Message, local, remote *Candidate) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (a *Agent) sendSTUN(msg *stun.Message, local, remote *Candidate) {</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSigDiffMod">&nbsp; &nbsp; &nbsp; &nbsp; _, err := local.writeTo(msg.Pack(), remote)</td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemSigDiffMod">&nbsp; &nbsp; &nbsp; &nbsp; <span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span>_, err := local.writeTo(msg.Pack(), remote)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">udpMsg</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">:=</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">msg.Pack()</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">udpMsgLen</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">:=</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">len(udpMsg)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">tcpMsg</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">:=</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">make([]byte,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">udpMsgLen</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">+</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">2)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">binary.BigEndian.PutUint16(tcpMsg,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">uint16(udpMsgLen))</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">copy(tcpMsg[2:],</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">udpMsg)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemInsigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">n,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">err</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">:=</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">a.IceConn.Write(tcpMsg)</span></td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.log.Tracef(&quot;failed to send STUN message: %s&quot;, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.log.Tracef(&quot;failed to send STUN message: %s&quot;, err)</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">-+</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">local.seen(true)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemInsigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSigRightMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">a.log.Debugf(&quot;sendSTUN</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">%d</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">bytes&quot;,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">n)</span></td>
+</tr>
+<tr class="SectionAll">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">}</td>
+</tr>
+</table>
+<br/>
+</body>
+</html>

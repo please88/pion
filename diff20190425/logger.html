@@ -1,0 +1,1163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+.AlignLeft { text-align: left; }
+.AlignCenter { text-align: center; }
+.AlignRight { text-align: right; }
+body { font-family: sans-serif; font-size: 11pt; }
+td { vertical-align: top; padding-left: 4px; padding-right: 4px; }
+
+tr.SectionGap td { font-size: 4px; border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionBegin td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionMiddle td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SubsectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+tr.SubsectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+table.fc { border-top: 1px solid Black; border-left: 1px solid Black; width: 100%; font-family: monospace; font-size: 10pt; }
+td.TextItemInsigAdd { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigDel { color: #000000; background-color: #EFEFFF; text-decoration: line-through; }
+td.TextItemInsigDiffMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigLeftMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigRightMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemNum { color: #827357; background-color: #F2F2F2; }
+td.TextItemSame { color: #000000; background-color: #FFFFFF; }
+td.TextItemSigAdd { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigDel { color: #000000; background-color: #FFE3E3; text-decoration: line-through; }
+td.TextItemSigDiffMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigLeftMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigRightMod { color: #000000; background-color: #FFE3E3; }
+.TextSegInsigDiff { color: #0000FF; }
+.TextSegReplacedDiff { color: #0000FF; font-style: italic; }
+.TextSegSigDiff { color: #FF0000; }
+</style>
+<title>logger.diff</title>
+</head>
+<body>
+logger.diff<br/>
+生成： 2019/7/12 10:13:59<br/>
+&nbsp; &nbsp;
+<br/>
+模式：&nbsp; 所有 &nbsp;
+<br/>
+左侧文件： C:\Users\frank\AppData\Local\Temp\TortoiseGit\logger-6f8a285.000.go &nbsp;
+<br/>
+右侧文件： E:\go\fssgo\src\github.com\pion\logging\logger.go &nbsp;
+<br/>
+<table class="fc" cellspacing="0" cellpadding="0">
+<tr class="SectionBegin">
+<td class="TextItemSame">package logging</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">package logging</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">import (</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">import (</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;fmt&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;fmt&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;io&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;io&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;log&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;log&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;os&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;os&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;strings&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;strings&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Use this abstraction to ensure thread-safe access to the logger's io.Writer</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Use this abstraction to ensure thread-safe access to the logger's io.Writer</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// (which could change at runtime)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// (which could change at runtime)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type loggerWriter struct {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type loggerWriter struct {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; sync.RWMutex</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; sync.RWMutex</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; output io.Writer</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; output io.Writer</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (lw *loggerWriter) SetOutput(output io.Writer) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (lw *loggerWriter) SetOutput(output io.Writer) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lw.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lw.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer lw.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer lw.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lw.output = output</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lw.output = output</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (lw *loggerWriter) Write(data []byte) (int, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (lw *loggerWriter) Write(data []byte) (int, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lw.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lw.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer lw.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer lw.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return lw.output.Write(data)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return lw.output.Write(data)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// DefaultLeveledLogger encapsulates functionality for providing logging at</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// DefaultLeveledLogger encapsulates functionality for providing logging at</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// user-defined levels</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// user-defined levels</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type DefaultLeveledLogger struct {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type DefaultLeveledLogger struct {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; level&nbsp; LogLevel</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; level&nbsp; LogLevel</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; writer *loggerWriter</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; writer *loggerWriter</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; trace&nbsp; *log.Logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; trace&nbsp; *log.Logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; debug&nbsp; *log.Logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; debug&nbsp; *log.Logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; info&nbsp;&nbsp; *log.Logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; info&nbsp;&nbsp; *log.Logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; warn&nbsp;&nbsp; *log.Logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; warn&nbsp;&nbsp; *log.Logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err&nbsp; &nbsp; *log.Logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err&nbsp; &nbsp; *log.Logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// WithTraceLogger is a chainable configuration function which sets the</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// WithTraceLogger is a chainable configuration function which sets the</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Trace-level logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Trace-level logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithTraceLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithTraceLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.trace = log</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.trace = log</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// WithDebugLogger is a chainable configuration function which sets the</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// WithDebugLogger is a chainable configuration function which sets the</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Debug-level logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Debug-level logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithDebugLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithDebugLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.debug = log</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.debug = log</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// WithInfoLogger is a chainable configuration function which sets the</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// WithInfoLogger is a chainable configuration function which sets the</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Info-level logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Info-level logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithInfoLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithInfoLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.info = log</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.info = log</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// WithWarnLogger is a chainable configuration function which sets the</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// WithWarnLogger is a chainable configuration function which sets the</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Warn-level logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Warn-level logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithWarnLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithWarnLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.warn = log</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.warn = log</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// WithErrorLogger is a chainable configuration function which sets the</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// WithErrorLogger is a chainable configuration function which sets the</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Error-level logger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Error-level logger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithErrorLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithErrorLogger(log *log.Logger) *DefaultLeveledLogger {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.err = log</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.err = log</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// WithOutput is a chainable configuration function which sets the logger's</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// WithOutput is a chainable configuration function which sets the logger's</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// logging output to the supplied io.Writer</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// logging output to the supplied io.Writer</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithOutput(output io.Writer) *DefaultLeveledLogger {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) WithOutput(output io.Writer) *DefaultLeveledLogger {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.writer.SetOutput(output)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.writer.SetOutput(output)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ll</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) logf(logger *log.Logger, level LogLevel, format string, args ...interface{}) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) logf(logger *log.Logger, level LogLevel, format string, args ...interface{}) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if ll.level.Get() &lt; level {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if ll.level.Get() &lt; level {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; callDepth := 3 // this frame + wrapper func + caller</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; callDepth := 3 // this frame + wrapper func + caller</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; msg := fmt.Sprintf(format, args...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; msg := fmt.Sprintf(format, args...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := logger.Output(callDepth, msg); err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err := logger.Output(callDepth, msg); err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fmt.Fprintf(os.Stderr, &quot;Unable to log: %s&quot;, err)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fmt.Fprintf(os.Stderr, &quot;Unable to log: %s&quot;, err)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// SetLevel sets the logger's logging level</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// SetLevel sets the logger's logging level</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) SetLevel(newLevel LogLevel) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) SetLevel(newLevel LogLevel) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.level.Set(newLevel)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.level.Set(newLevel)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Trace emits the preformatted message if the logger is at or below LogLevelTrace</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Trace emits the preformatted message if the logger is at or below LogLevelTrace</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Trace(msg string) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Trace(msg string) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.trace, LogLevelTrace, msg)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.trace, LogLevelTrace, msg)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Tracef formats and emits a message if the logger is at or below LogLevelTrace</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Tracef formats and emits a message if the logger is at or below LogLevelTrace</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Tracef(format string, args ...interface{}) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Tracef(format string, args ...interface{}) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.trace, LogLevelTrace, format, args...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.trace, LogLevelTrace, format, args...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Debug emits the preformatted message if the logger is at or below LogLevelDebug</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Debug emits the preformatted message if the logger is at or below LogLevelDebug</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Debug(msg string) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Debug(msg string) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.debug, LogLevelDebug, msg)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.debug, LogLevelDebug, msg)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Debugf formats and emits a message if the logger is at or below LogLevelDebug</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Debugf formats and emits a message if the logger is at or below LogLevelDebug</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Debugf(format string, args ...interface{}) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Debugf(format string, args ...interface{}) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.debug, LogLevelDebug, format, args...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.debug, LogLevelDebug, format, args...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Info emits the preformatted message if the logger is at or below LogLevelInfo</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Info emits the preformatted message if the logger is at or below LogLevelInfo</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Info(msg string) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Info(msg string) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.info, LogLevelInfo, msg)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.info, LogLevelInfo, msg)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Infof formats and emits a message if the logger is at or below LogLevelInfo</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Infof formats and emits a message if the logger is at or below LogLevelInfo</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Infof(format string, args ...interface{}) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Infof(format string, args ...interface{}) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.info, LogLevelInfo, format, args...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.info, LogLevelInfo, format, args...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Warn emits the preformatted message if the logger is at or below LogLevelWarn</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Warn emits the preformatted message if the logger is at or below LogLevelWarn</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Warn(msg string) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Warn(msg string) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.warn, LogLevelWarn, msg)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.warn, LogLevelWarn, msg)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Warnf formats and emits a message if the logger is at or below LogLevelWarn</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Warnf formats and emits a message if the logger is at or below LogLevelWarn</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Warnf(format string, args ...interface{}) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Warnf(format string, args ...interface{}) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.warn, LogLevelWarn, format, args...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.warn, LogLevelWarn, format, args...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Error emits the preformatted message if the logger is at or below LogLevelError</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Error emits the preformatted message if the logger is at or below LogLevelError</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Error(msg string) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Error(msg string) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.err, LogLevelError, msg)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.err, LogLevelError, msg)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Errorf formats and emits a message if the logger is at or below LogLevelError</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Errorf formats and emits a message if the logger is at or below LogLevelError</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Errorf(format string, args ...interface{}) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (ll *DefaultLeveledLogger) Errorf(format string, args ...interface{}) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.err, LogLevelError, format, args...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ll.logf(ll.err, LogLevelError, format, args...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// NewDefaultLeveledLoggerForScope returns a configured LeveledLogger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// NewDefaultLeveledLoggerForScope returns a configured LeveledLogger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func NewDefaultLeveledLoggerForScope(scope string, level LogLevel, writer io.Writer) *DefaultLeveledLogger {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func NewDefaultLeveledLoggerForScope(scope string, level LogLevel, writer io.Writer) *DefaultLeveledLogger {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if writer == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if writer == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; writer = os.Stdout</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; writer = os.Stdout</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; logger := &amp;DefaultLeveledLogger{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; logger := &amp;DefaultLeveledLogger{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; writer: &amp;loggerWriter{output: writer},</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; writer: &amp;loggerWriter{output: writer},</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; level:&nbsp; level,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; level:&nbsp; level,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return logger.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return logger.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithTraceLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s TRACE: &quot;, scope), log.Lmicroseconds|log.Lshortfile)).</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithTraceLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s TRACE: &quot;, scope), log.Lmicroseconds|log.Lshortfile)).</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithDebugLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s DEBUG: &quot;, scope), log.Lmicroseconds|log.Lshortfile)).</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithDebugLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s DEBUG: &quot;, scope), log.Lmicroseconds|log.Lshortfile)).</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithInfoLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s INFO: &quot;, scope), log.LstdFlags)).</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithInfoLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s INFO: &quot;, scope), log.LstdFlags)).</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithWarnLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s WARNING: &quot;, scope), log.LstdFlags)).</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithWarnLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s WARNING: &quot;, scope), log.LstdFlags)).</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithErrorLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s ERROR: &quot;, scope), log.LstdFlags))</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WithErrorLogger(log.New(logger.writer, fmt.Sprintf(&quot;%s ERROR: &quot;, scope), log.LstdFlags))</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// DefaultLoggerFactory define levels by scopes and creates new DefaultLeveledLogger</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// DefaultLoggerFactory define levels by scopes and creates new DefaultLeveledLogger</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type DefaultLoggerFactory struct {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type DefaultLoggerFactory struct {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; Writer&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; io.Writer</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; Writer&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; io.Writer</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; DefaultLogLevel LogLevel</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; DefaultLogLevel LogLevel</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ScopeLevels&nbsp; &nbsp;&nbsp; map[string]LogLevel</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; ScopeLevels&nbsp; &nbsp;&nbsp; map[string]LogLevel</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// NewDefaultLoggerFactory creates a new DefaultLoggerFactory</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// NewDefaultLoggerFactory creates a new DefaultLoggerFactory</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func NewDefaultLoggerFactory() *DefaultLoggerFactory {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func NewDefaultLoggerFactory() *DefaultLoggerFactory {</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; factory := DefaultLoggerFactory{}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; factory := DefaultLoggerFactory{}</td>
+</tr>
+<tr class="SectionAll">
+<td class="TextItemSigDiffMod">&nbsp; &nbsp; &nbsp; &nbsp; factory.DefaultLogLevel = LogLevelError</td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemSigDiffMod">&nbsp; &nbsp; &nbsp; &nbsp; factory.DefaultLogLevel = LogLevel<span class="TextSegSigDiff">Trace//LogLevel</span>Error</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; factory.ScopeLevels = make(map[string]LogLevel)</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; factory.ScopeLevels = make(map[string]LogLevel)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; factory.Writer = os.Stdout</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; factory.Writer = os.Stdout</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; logLevels := map[string]LogLevel{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; logLevels := map[string]LogLevel{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;ERROR&quot;: LogLevelError,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;ERROR&quot;: LogLevelError,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;WARN&quot;:&nbsp; LogLevelWarn,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;WARN&quot;:&nbsp; LogLevelWarn,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;INFO&quot;:&nbsp; LogLevelInfo,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;INFO&quot;:&nbsp; LogLevelInfo,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;DEBUG&quot;: LogLevelDebug,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;DEBUG&quot;: LogLevelDebug,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;TRACE&quot;: LogLevelTrace,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;TRACE&quot;: LogLevelTrace,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for name, level := range logLevels {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for name, level := range logLevels {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; env := os.Getenv(fmt.Sprintf(&quot;PIONS_LOG_%s&quot;, name))</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; env := os.Getenv(fmt.Sprintf(&quot;PIONS_LOG_%s&quot;, name))</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if env == &quot;&quot; {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if env == &quot;&quot; {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if strings.ToLower(env) == &quot;all&quot; {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if strings.ToLower(env) == &quot;all&quot; {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; factory.DefaultLogLevel = level</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; factory.DefaultLogLevel = level</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; scopes := strings.Split(strings.ToLower(env), &quot;,&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; scopes := strings.Split(strings.ToLower(env), &quot;,&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for _, scope := range scopes {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for _, scope := range scopes {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; factory.ScopeLevels[scope] = level</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; factory.ScopeLevels[scope] = level</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return &amp;factory</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return &amp;factory</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// NewLogger returns a configured LeveledLogger for the given , argsscope</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// NewLogger returns a configured LeveledLogger for the given , argsscope</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (f *DefaultLoggerFactory) NewLogger(scope string) LeveledLogger {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (f *DefaultLoggerFactory) NewLogger(scope string) LeveledLogger {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; logLevel := f.DefaultLogLevel</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; logLevel := f.DefaultLogLevel</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if f.ScopeLevels != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if f.ScopeLevels != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; scopeLevel, found := f.ScopeLevels[scope]</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; scopeLevel, found := f.ScopeLevels[scope]</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if found {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if found {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; logLevel = scopeLevel</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; logLevel = scopeLevel</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return NewDefaultLeveledLoggerForScope(scope, logLevel, f.Writer)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return NewDefaultLeveledLoggerForScope(scope, logLevel, f.Writer)</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+</table>
+<br/>
+</body>
+</html>

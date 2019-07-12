@@ -1,0 +1,828 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+.AlignLeft { text-align: left; }
+.AlignCenter { text-align: center; }
+.AlignRight { text-align: right; }
+body { font-family: sans-serif; font-size: 11pt; }
+td { vertical-align: top; padding-left: 4px; padding-right: 4px; }
+
+tr.SectionGap td { font-size: 4px; border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionBegin td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionMiddle td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SubsectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+tr.SubsectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+table.fc { border-top: 1px solid Black; border-left: 1px solid Black; width: 100%; font-family: monospace; font-size: 10pt; }
+td.TextItemInsigAdd { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigDel { color: #000000; background-color: #EFEFFF; text-decoration: line-through; }
+td.TextItemInsigDiffMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigLeftMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemInsigRightMod { color: #000000; background-color: #EFEFFF; }
+td.TextItemNum { color: #827357; background-color: #F2F2F2; }
+td.TextItemSame { color: #000000; background-color: #FFFFFF; }
+td.TextItemSigAdd { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigDel { color: #000000; background-color: #FFE3E3; text-decoration: line-through; }
+td.TextItemSigDiffMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigLeftMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigRightMod { color: #000000; background-color: #FFE3E3; }
+.TextSegInsigDiff { color: #0000FF; }
+.TextSegReplacedDiff { color: #0000FF; font-style: italic; }
+.TextSegSigDiff { color: #FF0000; }
+</style>
+<title>icegatherer.diff</title>
+</head>
+<body>
+icegatherer.diff<br/>
+生成： 2019/7/12 14:20:18<br/>
+&nbsp; &nbsp;
+<br/>
+模式：&nbsp; 所有 &nbsp;
+<br/>
+左侧文件： E:\go\fssgo\src\github.com\pion\webrtc\v2\icegatherer.go &nbsp;
+<br/>
+右侧文件： E:\go\pion\src\github.com\pion\webrtc\v2\icegatherer.go &nbsp;
+<br/>
+<table class="fc" cellspacing="0" cellpadding="0">
+<tr class="SectionBegin">
+<td class="TextItemSame">// +build !js</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">// +build !js</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">package webrtc</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">package webrtc</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">import (</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">import (</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;errors&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;errors&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;sync&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/ice&quot;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &quot;github.com/pion/ice&quot;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// The ICEGatherer gathers local host, server reflexive and relay</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// The ICEGatherer gathers local host, server reflexive and relay</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// candidates, as well as enabling the retrieval of local Interactive</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// candidates, as well as enabling the retrieval of local Interactive</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Connectivity Establishment (ICE) parameters which can be</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Connectivity Establishment (ICE) parameters which can be</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// exchanged in signaling.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// exchanged in signaling.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">type ICEGatherer struct {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">type ICEGatherer struct {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lock&nbsp; sync.RWMutex</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; lock&nbsp; sync.RWMutex</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; state ICEGathererState</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; state ICEGathererState</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; validatedServers []*ice.URL</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; validatedServers []*ice.URL</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; agent *ice.Agent</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; agent *ice.Agent</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; api *API</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; api *API</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// NewICEGatherer creates a new NewICEGatherer.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// NewICEGatherer creates a new NewICEGatherer.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// This constructor is part of the ORTC API. It is not</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// This constructor is part of the ORTC API. It is not</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// meant to be used together with the basic WebRTC API.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// meant to be used together with the basic WebRTC API.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (api *API) NewICEGatherer(opts ICEGatherOptions) (*ICEGatherer, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (api *API) NewICEGatherer(opts ICEGatherOptions) (*ICEGatherer, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var validatedServers []*ice.URL</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; var validatedServers []*ice.URL</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if len(opts.ICEServers) &gt; 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if len(opts.ICEServers) &gt; 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for _, server := range opts.ICEServers {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for _, server := range opts.ICEServers {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; url, err := server.validate()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; url, err := server.validate()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; validatedServers = append(validatedServers, url...)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; validatedServers = append(validatedServers, url...)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return &amp;ICEGatherer{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return &amp;ICEGatherer{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; state:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ICEGathererStateNew,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; state:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ICEGathererStateNew,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; validatedServers: validatedServers,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; validatedServers: validatedServers,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; api:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; api,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; api:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; api,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// State indicates the current state of the ICE gatherer.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// State indicates the current state of the ICE gatherer.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (g *ICEGatherer) State() ICEGathererState {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (g *ICEGatherer) State() ICEGathererState {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return g.state</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return g.state</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Gather ICE candidates.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Gather ICE candidates.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (g *ICEGatherer) Gather() error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (g *ICEGatherer) Gather() error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; config := &amp;ice.AgentConfig{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; config := &amp;ice.AgentConfig{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Urls:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; g.validatedServers,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Urls:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; g.validatedServers,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PortMin:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; g.api.settingEngine.ephemeralUDP.PortMin,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PortMin:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; g.api.settingEngine.ephemeralUDP.PortMin,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PortMax:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; g.api.settingEngine.ephemeralUDP.PortMax,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PortMax:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; g.api.settingEngine.ephemeralUDP.PortMax,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ConnectionTimeout: g.api.settingEngine.timeout.ICEConnection,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ConnectionTimeout: g.api.settingEngine.timeout.ICEConnection,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; KeepaliveInterval: g.api.settingEngine.timeout.ICEKeepalive,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; KeepaliveInterval: g.api.settingEngine.timeout.ICEKeepalive,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LoggerFactory:&nbsp; &nbsp;&nbsp; g.api.settingEngine.LoggerFactory,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LoggerFactory:&nbsp; &nbsp;&nbsp; g.api.settingEngine.LoggerFactory,</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; requestedNetworkTypes := g.api.settingEngine.candidates.ICENetworkTypes</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; requestedNetworkTypes := g.api.settingEngine.candidates.ICENetworkTypes</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if len(requestedNetworkTypes) == 0 {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if len(requestedNetworkTypes) == 0 {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; requestedNetworkTypes = supportedNetworkTypes</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; requestedNetworkTypes = supportedNetworkTypes</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for _, typ := range requestedNetworkTypes {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; for _, typ := range requestedNetworkTypes {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config.NetworkTypes = append(config.NetworkTypes, ice.NetworkType(typ))</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config.NetworkTypes = append(config.NetworkTypes, ice.NetworkType(typ))</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; agent, err := ice.NewAgent(config)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; agent, err := ice.NewAgent(config)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.agent = agent</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.agent = agent</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.state = ICEGathererStateComplete</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.state = ICEGathererStateComplete</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// Close prunes all local candidates, and closes the ports.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// Close prunes all local candidates, and closes the ports.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (g *ICEGatherer) Close() error {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (g *ICEGatherer) Close() error {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.Lock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.Lock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.Unlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.Unlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if g.agent == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if g.agent == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err := g.agent.Close()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; err := g.agent.Close()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.agent = nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.agent = nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// GetLocalParameters returns the ICE parameters of the ICEGatherer.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// GetLocalParameters returns the ICE parameters of the ICEGatherer.</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">func (g *ICEGatherer) GetLocalParameters() (ICEParameters, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (g *ICEGatherer) GetLocalParameters() (ICEParameters, error) {</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">g.lock.RLock()</span></td>
+<td class="AlignCenter">+-</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">defer</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">g.lock.RUnlock()</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">if</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">g.agent</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">==</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">nil</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">{</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="TextSegSigDiff">return</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">ICEParameters{},</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">errors.New(&quot;gatherer</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">not</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">started&quot;)</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">}</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemInsigLeftMod">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">frag,</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">pwd</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">:=</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">g.agent.GetLocalUserCredentials()</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemInsigLeftMod">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">return</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">ICEParameters{</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="TextSegSigDiff">UsernameFragment:</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">frag,</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="TextSegSigDiff">Password:</span><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="TextSegSigDiff">pwd,</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="TextSegSigDiff">ICELite:</span><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">false,</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">},</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">nil</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemInsigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSigLeftMod"><span class="TextSegInsigDiff">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="TextSegSigDiff">//for</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">ice</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">lite</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">mode</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.RLock()</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if g.agent == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if g.agent == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return ICEParameters{}, errors.New(&quot;gatherer not started&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return ICEParameters{}, errors.New(&quot;gatherer not started&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; frag, pwd := g.agent.GetLocalUserCredentials()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; frag, pwd := g.agent.GetLocalUserCredentials()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ICEParameters{</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return ICEParameters{</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; UsernameFragment: frag,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; UsernameFragment: frag,</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Password:&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; pwd,</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Password:&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; pwd,</td>
+</tr>
+<tr class="SectionAll">
+<td class="TextItemSigDiffMod">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ICELite:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="TextSegSigDiff">tru</span>e,</td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemSigDiffMod">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ICELite:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="TextSegSigDiff">fals</span>e,</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, nil</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }, nil</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">// GetLocalCandidates returns the sequence of valid local candidates associated with the ICEGatherer.</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">// GetLocalCandidates returns the sequence of valid local candidates associated with the ICEGatherer.</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">func (g *ICEGatherer) GetLocalCandidates() ([]ICECandidate, error) {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">func (g *ICEGatherer) GetLocalCandidates() ([]ICECandidate, error) {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.RLock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; g.lock.RLock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.RUnlock()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; defer g.lock.RUnlock()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if g.agent == nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if g.agent == nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errors.New(&quot;gatherer not started&quot;)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, errors.New(&quot;gatherer not started&quot;)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; iceCandidates, err := g.agent.GetLocalCandidates()</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; iceCandidates, err := g.agent.GetLocalCandidates()</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; if err != nil {</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return nil, err</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; }</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return newICECandidatesFromICE(iceCandidates)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">&nbsp; &nbsp; &nbsp; &nbsp; return newICECandidatesFromICE(iceCandidates)</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemSame">}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemSame">}</td>
+</tr>
+</table>
+<br/>
+</body>
+</html>
