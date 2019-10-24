@@ -75,9 +75,16 @@ func newIceserver(port int) *Iceserver {
 	return nil;
 }
 
+func NewIceServer(port int) *Iceserver {
+	if instance == nil {
+		instance = newIceserver(port)
+	}
+	return instance
+}
+
 func GetIceServer() *Iceserver {
 	if instance == nil {
-		instance = newIceserver(20002)
+ 		panic("can not get iceserver")
 	}
 	return instance
 }
